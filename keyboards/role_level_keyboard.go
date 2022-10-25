@@ -6,11 +6,11 @@ func CreateRoleLevelKeyboard() tgbotapi.InlineKeyboardMarkup {
 	var roleLevelKeyboard = tgbotapi.NewInlineKeyboardMarkup(
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("Министерство образования",
-				"Министерство"),
+				"Министерство образования"),
 			tgbotapi.NewInlineKeyboardButtonData("Ректор университета",
-				"Ректор"),
+				"Ректор университета"),
 			tgbotapi.NewInlineKeyboardButtonData("Президент университета",
-				"Президент"),
+				"Президент университета"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("Проректор",
@@ -18,13 +18,13 @@ func CreateRoleLevelKeyboard() tgbotapi.InlineKeyboardMarkup {
 			tgbotapi.NewInlineKeyboardButtonData("Директор",
 				"Директор"),
 			tgbotapi.NewInlineKeyboardButtonData("Заведущий кафедры",
-				"Заведущий"),
+				"Заведущий кафедры"),
 		),
 		tgbotapi.NewInlineKeyboardRow(
 			tgbotapi.NewInlineKeyboardButtonData("Преподаватель",
 				"Преподаватель"),
 			tgbotapi.NewInlineKeyboardButtonData("Староста учебной группы",
-				"Староста"),
+				"Староста учебной группы"),
 			tgbotapi.NewInlineKeyboardButtonData("Студент",
 				"Студент"),
 		),

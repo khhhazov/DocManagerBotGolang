@@ -1,7 +1,7 @@
 package models
 
 type Info struct {
-	Role     int
-	TaskType int
+	Role     string
+	TaskType string
 	Weight   int
 }
