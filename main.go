@@ -1,8 +1,12 @@
 package main
 
 import (
-	"DocManagerBot/factories"
 	"DocManagerBot/models"
+)
+
+import (
+	"DocManagerBot/factories"
+	_ "github.com/jackc/pgx/v5/stdlib"
 	"log"
 )
 

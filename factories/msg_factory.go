@@ -2,6 +2,7 @@ package factories
 
 import (
 	"DocManagerBot/calculation"
+	db2 "DocManagerBot/db"
 	"DocManagerBot/keyboards"
 	"DocManagerBot/models"
 	"fmt"
@@ -9,7 +10,9 @@ import (
 	"time"
 )
 
-func FactoryMsg(command string, update tgbotapi.Update, info *models.Info) tgbotapi.MessageConfig {
+func FactoryMsg(command string, update tgbotapi.Update,
+	info *models.Info,
+) tgbotapi.MessageConfig {
 	var msg = tgbotapi.NewMessage(update.Message.Chat.ID,
 		"")
 
@@ -35,6 +38,11 @@ func FactoryMsg(command string, update tgbotapi.Update, info *models.Info) tgbot
 		taskType := calculation.CalcTaskTypeWeight(info.TaskType)
 		ki := role + taskType + int(rsltDateDays)
 		info.Weight = ki * ((1 * int(rsltDateDays)) + (2 * role) + (3 * taskType))
+
+		db := db2.ConnectDB()
+		db2.InsertWeight(info.Weight, info.Role,
+			info.TaskType, crntDate.Format("02.01.2006"),
+			cmplDate.Format("02.01.2006"), db)
 
 		msg.Text = fmt.Sprintf("Спасибо за уделенное время\nЗадача находится на рассмотрении\n Weight:[%d]", info.Weight)
 		return msg
