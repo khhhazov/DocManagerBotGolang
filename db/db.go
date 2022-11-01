@@ -31,5 +31,16 @@ func InsertWeight(weight int, role string,
 		panic(err)
 	}
 	fmt.Println(result.RowsAffected())
-	defer db.Close()
+}
+
+func ClearDataBase(db *sqlx.DB) {
+	query := "DELETE FROM weight_table"
+	_, err := db.Query(query)
+	if err != nil {
+		panic(err)
+	}
+	_, err = db.Query("ALTER SEQUENCE weight_table_id_seq RESTART WITH 1")
+	if err != nil {
+		panic(err)
+	}
 }
