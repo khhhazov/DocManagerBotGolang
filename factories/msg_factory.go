@@ -43,8 +43,17 @@ func FactoryMsg(command string, update tgbotapi.Update,
 		db2.InsertWeight(info.Weight, info.Role,
 			info.TaskType, crntDate.Format("02.01.2006"),
 			cmplDate.Format("02.01.2006"), db)
+		defer db.Close()
 
-		msg.Text = fmt.Sprintf("Спасибо за уделенное время\nЗадача находится на рассмотрении\n Weight:[%d]", info.Weight)
+		msg.Text = fmt.Sprintf("Спасибо за уделенное время\nЗадача находится на рассмотрении")
+		return msg
+	case "/clear":
+		db := db2.ConnectDB()
+		db2.ClearDataBase(db)
+
+		defer db.Close()
+
+		msg.Text = "Таблица успешно очищена"
 		return msg
 	default:
 		return msg

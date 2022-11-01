@@ -16,6 +16,8 @@ func FactoryCommands(update tgbotapi.Update, ending *bool) string {
 	switch update.Message.Text {
 	case "/start":
 		return update.Message.Text
+	case "/clear":
+		return update.Message.Text
 	default:
 		return ""
 	}
