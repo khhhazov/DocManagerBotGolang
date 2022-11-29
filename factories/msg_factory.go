@@ -7,6 +7,7 @@ import (
 	"DocManagerBot/models"
 	"fmt"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"log"
 	"time"
 )
 
@@ -25,7 +26,7 @@ func FactoryMsg(command string, update tgbotapi.Update,
 	case "/date":
 		var dt, err = time.Parse("02.01.2006", update.Message.Text)
 		if err != nil {
-			panic(err)
+			log.Print(err)
 		}
 
 		/*DATE*/

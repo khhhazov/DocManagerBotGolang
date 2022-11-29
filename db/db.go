@@ -8,7 +8,7 @@ import (
 )
 
 func ConnectDB() *sqlx.DB {
-	connStr := "host=178.20.47.138 port=5432 user=vymanvar password=1234 dbname=docdb sslmode=disable"
+	connStr := "host=localhost port=5432 user=vymanvar password=1234 dbname=docdb sslmode=disable"
 	db, err := sqlx.Open("pgx", connStr)
 	if err != nil {
 		log.Fatalf("Error connecting db: %s", err.Error())
@@ -16,7 +16,7 @@ func ConnectDB() *sqlx.DB {
 	}
 	err = db.Ping()
 	if err != nil {
-		panic(err)
+		log.Print(err)
 	}
 	return db
 }
